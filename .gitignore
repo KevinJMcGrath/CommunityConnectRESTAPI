@@ -1,0 +1,9 @@
+.idea/
+.keys/
+.vscode/
+logs/
+data/
+
+config.json.dev
+config.json
+*.pem

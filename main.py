@@ -1,32 +1,14 @@
 import logging
 
-from optparse import OptionParser
-from pathlib import Path
-
 import api.app as api
 import config
-import package_logger
-import salesforce
-import template_import
+from utility import package_logger
+from user_import import template_import, salesforce
 import user_import
 
-from symphony.bot_client import BotClient
 
 package_logger.initialize_logging()
 
-
-def run_main(file_path: str):
-    if not file_path:
-        if config.import_path:
-            file_path = config.import_path
-        else:
-            file_path = input("Please specify the user import file path:  \n")
-
-    if file_path:
-        import_users(Path(file_path))
-    else:
-        print('Invalid file path.')
-        exit(1)
 
 def import_users(file_path):
     logging.getLogger()
@@ -49,10 +31,4 @@ def run_api():
 
 
 if __name__ == "__main__":
-    parser = OptionParser()
-    parser.add_option("-f", "--file", help="Specify the input CSV for adding to Symphony", dest="file_path",
-                      default=None, action="store_true")
-
-    options, args = parser.parse_args()
-
-    run_main(options.file_path)
+    run_api()

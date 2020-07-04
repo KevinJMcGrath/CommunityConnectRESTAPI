@@ -4,6 +4,7 @@
 logs/
 data/
 
-config.json.dev
+config.json.prod
 config.json
+config.json.prod
 *.pem
